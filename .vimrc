@@ -36,3 +36,14 @@ $", "", "")
     copen
 enddef
 
+" This command sets the background to a red color and the foreground to white for the active tab.
+" The gui=bold makes the text bold.
+highlight TabLineSel guifg=#FFFFFF guibg=#FF0000 gui=bold
+
+" This command sets the background for inactive tabs to a dark gray and the foreground to a lighter gray.
+highlight TabLine guifg=#808080 guibg=#303030
+
+" This command sets the background for the empty space to the same as the inactive tabs.
+highlight TabLineFill guifg=#808080 guibg=#303030
+
+
