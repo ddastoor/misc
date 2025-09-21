@@ -47,3 +47,31 @@ highlight TabLine guifg=#808080 guibg=#303030
 highlight TabLineFill guifg=#808080 guibg=#303030
 
 
+def WriteListedBufferPaths()
+    # Get a list of dictionaries for all listed buffers.
+    # The {'buflisted': 1} argument ensures we only get buffers that
+    # are in the buffer list (i.e., not unlisted or temporary).
+    var buffers = getbufinfo({'buflisted': 1})
+    
+    # Initialize an empty list to store the file paths.
+    var filePaths: list<string> = []
+    
+    # Iterate through the list of buffers.
+    # A buffer's 'name' property is the file path.
+    for buf in buffers
+        # Check if the buffer has a valid file path.
+        if !empty(buf.name)
+            # Use fnamemodify() with the ':p' modifier to get the full path.
+            # This handles both absolute and relative paths correctly.
+            var fullPath = fnamemodify(buf.name, ':p')
+            filePaths->add(fullPath)
+        endif
+    endfor
+    
+    # Write the list of file paths to the output file.
+    # The 'w' flag ensures the file is created or overwritten.
+    # This will write each path on a new line.
+    writefile(filePaths, outputFile, 'w')
+    
+    echo "Wrote " .. len(filePaths) .. " file paths to " .. outputFile
+enddef
