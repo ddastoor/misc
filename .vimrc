@@ -77,5 +77,7 @@ def WriteListedBufferPaths()
 enddef
 
 autocmd BufWinEnter * call matchadd('Todo', '\<TODO\>')
+highlight TodoHighlight ctermbg=lightcyan ctermfg=black cterm=bold guibg=lightcyan guifg=black gui=bold
+autocmd BufWinEnter * call matchadd('TodoHighlight', '\c\<todo\>')
 
 
