@@ -80,4 +80,9 @@ autocmd BufWinEnter * call matchadd('Todo', '\<TODO\>')
 highlight TodoHighlight ctermbg=lightcyan ctermfg=black cterm=bold guibg=lightcyan guifg=black gui=bold
 autocmd BufWinEnter * call matchadd('TodoHighlight', '\c\<todo\>')
 
+highlight TodoHighlight ctermbg=lightcyan ctermfg=black cterm=bold guibg=lightcyan guifg=black gui=bold
 
+augroup TodoHighlighting
+    autocmd!
+    autocmd BufRead,BufNewFile * syntax match TodoHighlight /\c\<todo\>/
+augroup END
