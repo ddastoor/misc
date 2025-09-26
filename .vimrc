@@ -75,3 +75,7 @@ def WriteListedBufferPaths()
     
     echo "Wrote " .. len(filePaths) .. " file paths to " .. outputFile
 enddef
+
+autocmd BufWinEnter * call matchadd('Todo', '\<TODO\>')
+
+
